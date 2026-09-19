@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sudoku Mini · a board for you</title>
-<meta name="description" content="A friend sent you a Sudoku board. Open it in Sudoku Mini.">
-<meta property="og:title" content="A Sudoku board for you 🧩">
-<meta property="og:description" content="Tap to play it in Sudoku Mini — can you beat their time?">
+<meta name="description" content="A friend has challenged you to a Sudoku board. Open it in Sudoku Mini.">
+<meta property="og:title" content="You have been challenged to a Sudoku 🧩">
+<meta property="og:description" content="Tap to take on their board in Sudoku Mini — can you beat their time?">
 <meta property="og:image" content="og.png">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#F4EFE4">
@@ -77,7 +77,7 @@
   </div>
 
   <section id="ok" hidden style="width:100%;display:flex;flex-direction:column;align-items:center">
-    <div class="eyebrow">a board for you</div>
+    <div class="eyebrow" id="eyebrow">a friend sent you a board</div>
     <h1 id="title"></h1>
     <div class="beat" id="beat"></div>
     <div class="board"><div class="grid" id="grid" role="img"></div></div>
@@ -88,6 +88,7 @@
     </div>
     <p class="note">Already have the app? Tap <b>Open in Sudoku Mini</b>.<br>
       Just installed it? Go back to the chat and tap the link again.</p>
+    <p class="note"><a href="privacypolicy/" style="color:inherit">Privacy policy</a></p>
   </section>
 
   <section id="bad" class="broken" hidden>
@@ -96,6 +97,7 @@
     <div class="buttons">
       <a class="btn secondary" href="https://play.google.com/store/apps/details?id=com.fungrid.sudokumini">Get Sudoku Mini on Google Play</a>
     </div>
+    <p class="note"><a href="privacypolicy/" style="color:inherit">Privacy policy</a></p>
   </section>
 </main>
 <script>
@@ -153,7 +155,9 @@
   document.getElementById("ok").hidden = false;
   const [bw, bh] = BOX[board.n];
   document.getElementById("title").textContent = `${board.n}×${board.n} · ${TIERS[board.n][board.level][0]}`;
-  document.getElementById("beat").textContent = board.secs ? `time to beat ${clock(board.secs)}` : "";
+  // A time in the link makes it a challenge; without one it is simply a board to try.
+  document.getElementById("beat").textContent = board.secs ? `beat ${clock(board.secs)} to win` : "";
+  if (board.secs) document.getElementById("eyebrow").textContent = "a friend has challenged you";
   document.getElementById("clues").textContent = `${board.clues} clues`;
   document.title = `Sudoku Mini · ${board.n}×${board.n} ${TIERS[board.n][board.level][0]}`;
   const grid = document.getElementById("grid");
