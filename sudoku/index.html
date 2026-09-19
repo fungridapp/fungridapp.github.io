@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudoku Mini · a board for you</title>
+<meta name="description" content="A friend sent you a Sudoku board. Open it in Sudoku Mini.">
+<meta property="og:title" content="A Sudoku board for you 🧩">
+<meta property="og:description" content="Tap to play it in Sudoku Mini — can you beat their time?">
+<meta property="og:image" content="og.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F4EFE4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4EFE4; --surface: #FFFFFF; --ink: #16181D; --ink-70: rgba(22,24,29,.68);
+    --hair: rgba(22,24,29,.16); --coral: #E0623C; --teal: #2F9BA1; --wash: rgba(22,24,29,.043);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #18191D; --surface: #23252B; --ink: #EDE7DA; --ink-70: rgba(237,231,218,.68);
+      --hair: rgba(237,231,218,.16); --coral: #EC7148; --teal: #3BB0B6; --wash: rgba(237,231,218,.04);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #18191D; --surface: #23252B; --ink: #EDE7DA; --ink-70: rgba(237,231,218,.68);
+    --hair: rgba(237,231,218,.16); --coral: #EC7148; --teal: #3BB0B6; --wash: rgba(237,231,218,.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; color: var(--ink); background-color: var(--paper);
+    background-image: linear-gradient(var(--wash) 1px, transparent 1px), linear-gradient(90deg, var(--wash) 1px, transparent 1px);
+    background-size: 28px 28px;
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    display: flex; justify-content: center; padding: 28px 16px 40px;
+  }
+  main { width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 12px; align-self: flex-start; }
+  .tiles { display: grid; grid-template-columns: 22px 22px; gap: 4px; }
+  .tiles span { height: 22px; border-radius: 6px; display: grid; place-items: center;
+    font: 700 13px "Space Grotesk"; }
+  .t1 { background: var(--ink); color: var(--paper); } .t2 { background: var(--coral); color: #fff; }
+  .t3 { background: var(--teal); color: #fff; } .t4 { background: var(--surface); border: 2px solid var(--ink); }
+  .word { font: 800 30px "Bricolage Grotesque", sans-serif; letter-spacing: -.03em; line-height: 1; }
+  .mini { font: 500 11px "IBM Plex Mono", monospace; letter-spacing: .4em; color: var(--coral); text-transform: uppercase; }
+  .eyebrow { margin-top: 30px; font: 400 11px "IBM Plex Mono", monospace; letter-spacing: .24em;
+    text-transform: uppercase; color: var(--ink-70); }
+  h1 { margin: 6px 0 0; font: 800 34px "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; text-align: center; }
+  .beat { margin-top: 6px; font: 500 15px "Space Grotesk"; color: var(--coral); min-height: 1em; }
+  .board { margin-top: 20px; width: 100%; aspect-ratio: 1; background: var(--ink); border-radius: 16px;
+    padding: 6px; box-shadow: 5px 5px 0 rgba(0,0,0,.18); }
+  .grid { width: 100%; height: 100%; display: grid; background: var(--surface); border-radius: 11px; overflow: hidden; }
+  .cell { display: grid; place-items: center; font: 700 clamp(14px, 6vw, 26px) "Space Grotesk";
+    border-right: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+  .cell.bx-r { border-right: 2px solid var(--ink); } .cell.bx-b { border-bottom: 2px solid var(--ink); }
+  .clues { margin-top: 12px; font: 400 11px "IBM Plex Mono", monospace; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-70); }
+  .buttons { margin-top: 26px; width: 100%; display: flex; flex-direction: column; gap: 14px; }
+  a.btn { display: flex; align-items: center; justify-content: center; height: 54px; border-radius: 13px;
+    border: 2px solid var(--ink); font: 700 16px "Space Grotesk"; text-decoration: none;
+    box-shadow: 4px 4px 0 var(--coral); transition: transform .08s, box-shadow .08s; }
+  a.btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--coral); }
+  a.primary { background: var(--ink); color: var(--paper); }
+  a.secondary { background: var(--surface); color: var(--ink); box-shadow: 4px 4px 0 var(--hair); }
+  .note { margin-top: 18px; font-size: 13px; color: var(--ink-70); text-align: center; line-height: 1.45; }
+  .broken { margin-top: 40px; text-align: center; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand" aria-label="Sudoku Mini">
+    <div class="tiles" aria-hidden="true"><span class="t1">1</span><span class="t2">2</span><span class="t3">3</span><span class="t4">4</span></div>
+    <div><div class="word">SUDOKU</div><div class="mini">mini</div></div>
+  </div>
+
+  <section id="ok" hidden style="width:100%;display:flex;flex-direction:column;align-items:center">
+    <div class="eyebrow">a board for you</div>
+    <h1 id="title"></h1>
+    <div class="beat" id="beat"></div>
+    <div class="board"><div class="grid" id="grid" role="img"></div></div>
+    <div class="clues" id="clues"></div>
+    <div class="buttons">
+      <a class="btn primary" id="open" href="#">Open in Sudoku Mini</a>
+      <a class="btn secondary" id="get" href="https://play.google.com/store/apps/details?id=com.fungrid.sudokumini">Get Sudoku Mini on Google Play</a>
+    </div>
+    <p class="note">Already have the app? Tap <b>Open in Sudoku Mini</b>.<br>
+      Just installed it? Go back to the chat and tap the link again.</p>
+  </section>
+
+  <section id="bad" class="broken" hidden>
+    <h1>This link doesn’t hold a board</h1>
+    <p class="note">It may have been cut short or changed. Ask your friend to share it again.</p>
+    <div class="buttons">
+      <a class="btn secondary" href="https://play.google.com/store/apps/details?id=com.fungrid.sudokumini">Get Sudoku Mini on Google Play</a>
+    </div>
+  </section>
+</main>
+<script>
+// Mirrors engine/ShareCode.kt: base64url of
+// [version][n<<4|level][clues, two cells per byte][challenge secs, 2 bytes][CRC-16, 2 bytes].
+// The app re-checks everything (single solution included); this page only draws what it can read.
+(function () {
+  const PKG = "com.fungrid.sudokumini";
+  const PLAY = "https://play.google.com/store/apps/details?id=" + PKG;
+  const TIERS = { 4: [["Gentle", 11], ["Steady", 8]],
+                  6: [["Gentle", 22], ["Steady", 17], ["Sharp", 13]],
+                  9: [["Gentle", 38], ["Steady", 32], ["Sharp", 27], ["Expert", 23]] };
+  const BOX = { 4: [2, 2], 6: [3, 2], 9: [3, 3] }; // [box width, box height]
+  const ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+
+  function b64url(s) {
+    if (s.length % 4 === 1) return null;
+    const out = []; let bits = 0, count = 0;
+    for (const ch of s) {
+      const v = ALPHA.indexOf(ch); if (v < 0) return null;
+      bits = (bits << 6) | v; count += 6;
+      if (count >= 8) { count -= 8; out.push((bits >> count) & 0xFF); bits &= (1 << count) - 1; }
+    }
+    return bits === 0 ? out : null; // leftover bits must be zero, as in the app
+  }
+  const CRC = (() => { const t = []; for (let n = 0; n < 256; n++) { let c = n;
+    for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t.push(c >>> 0); } return t; })();
+  function crc16(bytes) { let c = 0xFFFFFFFF; for (const b of bytes) c = CRC[(c ^ b) & 0xFF] ^ (c >>> 8); return ((c ^ 0xFFFFFFFF) >>> 0) & 0xFFFF; }
+
+  function decode(code) {
+    if (!code || code.length > 96) return null;
+    const bytes = b64url(code); if (!bytes || bytes.length < 6) return null;
+    const body = bytes.slice(0, -2);
+    if (((bytes[bytes.length - 2] << 8) | bytes[bytes.length - 1]) !== crc16(body)) return null;
+    if (body[0] !== 1) return null;
+    const n = body[1] >> 4, level = body[1] & 15;
+    if (!TIERS[n] || !TIERS[n][level]) return null;
+    const cells = n * n;
+    if (body.length !== 2 + Math.ceil(cells / 2) + 2) return null;
+    const givens = [];
+    for (let c = 0; c < cells; c++) {
+      const b = body[2 + (c >> 1)], v = c % 2 === 0 ? b >> 4 : b & 15;
+      if (v > n) return null; givens.push(v);
+    }
+    const clues = givens.filter(v => v).length;
+    if (clues !== TIERS[n][level][1]) return null;
+    const secs = (body[body.length - 2] << 8) | body[body.length - 1];
+    return { n, level, givens, clues, secs };
+  }
+  const clock = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+
+  const code = new URLSearchParams(location.search).get("b");
+  const board = decode(code);
+  if (!board) { document.getElementById("bad").hidden = false; return; }
+  document.getElementById("ok").hidden = false;
+  const [bw, bh] = BOX[board.n];
+  document.getElementById("title").textContent = `${board.n}×${board.n} · ${TIERS[board.n][board.level][0]}`;
+  document.getElementById("beat").textContent = board.secs ? `time to beat ${clock(board.secs)}` : "";
+  document.getElementById("clues").textContent = `${board.clues} clues`;
+  document.title = `Sudoku Mini · ${board.n}×${board.n} ${TIERS[board.n][board.level][0]}`;
+  const grid = document.getElementById("grid");
+  grid.style.gridTemplateColumns = `repeat(${board.n}, 1fr)`;
+  grid.setAttribute("aria-label", `${board.n} by ${board.n} Sudoku with ${board.clues} clues`);
+  board.givens.forEach((v, i) => {
+    const r = Math.floor(i / board.n), c = i % board.n, d = document.createElement("div");
+    d.className = "cell" + ((c + 1) % bw === 0 && c < board.n - 1 ? " bx-r" : "") + ((r + 1) % bh === 0 && r < board.n - 1 ? " bx-b" : "");
+    if (c === board.n - 1) d.style.borderRight = "0";
+    if (r === board.n - 1) d.style.borderBottom = "0";
+    d.textContent = v || "";
+    grid.appendChild(d);
+  });
+  // On Android, open the app directly (Chrome's intent link), falling back to the Play listing.
+  const open = document.getElementById("open");
+  if (/Android/i.test(navigator.userAgent)) {
+    open.href = `intent://${location.host}${location.pathname}?b=${encodeURIComponent(code)}` +
+      `#Intent;scheme=https;package=${PKG};S.browser_fallback_url=${encodeURIComponent(PLAY)};end`;
+  } else {
+    open.hidden = true; // Sudoku Mini is an Android app.
+  }
+})();
+</script>
+</body>
+</html>
