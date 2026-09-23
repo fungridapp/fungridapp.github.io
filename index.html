@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FunGrid — small games, made properly</title>
+<meta name="description" content="FunGrid makes small, fast Android games. A few megabytes each, no sign-ups, and they play with or without a connection. XO Mini is on Google Play now.">
+<meta property="og:title" content="FunGrid">
+<meta property="og:description" content="Small, fast Android games. A few megabytes each, no sign-ups.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fungridapp.github.io/">
+<meta name="theme-color" content="#F4EFE4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* Palette follows sudoku/index.html - same studio, same hand. Each game then brings
+     its own accent, taken from that game's real in-app colours. */
+  :root{
+    --paper:#F4EFE4; --surface:#FFFFFF; --ink:#16181D;
+    --ink-70:rgba(22,24,29,.66); --ink-45:rgba(22,24,29,.45);
+    --hair:rgba(22,24,29,.14); --wash:rgba(22,24,29,.04);
+    --coral:#E0623C; --live:#1B6B44; --live-bg:rgba(27,107,68,.10);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#17181C; --surface:#212329; --ink:#EDE7DA;
+      --ink-70:rgba(237,231,218,.66); --ink-45:rgba(237,231,218,.45);
+      --hair:rgba(237,231,218,.15); --wash:rgba(237,231,218,.038);
+      --coral:#EC7148; --live:#5FD39B; --live-bg:rgba(95,211,155,.12);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#17181C; --surface:#212329; --ink:#EDE7DA;
+    --ink-70:rgba(237,231,218,.66); --ink-45:rgba(237,231,218,.45);
+    --hair:rgba(237,231,218,.15); --wash:rgba(237,231,218,.038);
+    --coral:#EC7148; --live:#5FD39B; --live-bg:rgba(95,211,155,.12);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; color:var(--ink); background-color:var(--paper);
+    background-image:linear-gradient(var(--wash) 1px,transparent 1px),
+                     linear-gradient(90deg,var(--wash) 1px,transparent 1px);
+    background-size:30px 30px;
+    font-family:"Space Grotesk",system-ui,sans-serif; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .shell{max-width:1000px; margin:0 auto; padding:0 24px}
+  a{color:inherit}
+  :focus-visible{outline:2.5px solid var(--coral); outline-offset:3px; border-radius:4px}
+  .mono{font-family:"IBM Plex Mono",monospace; font-weight:400; font-size:11px;
+        letter-spacing:.22em; text-transform:uppercase}
+
+  /* ---------- masthead: wordmark only, set in type ---------- */
+  header{padding:30px 0 0}
+  .head-in{display:flex; align-items:baseline; justify-content:space-between; gap:20px}
+  .wordmark{font:800 21px "Bricolage Grotesque",sans-serif; letter-spacing:-.02em; text-decoration:none}
+  .wordmark em{font-style:normal; color:var(--coral)}
+  .head-in .mono{color:var(--ink-45)}
+
+  /* ---------- hero ---------- */
+  .hero{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
+        padding:72px 0 78px}
+  h1{margin:14px 0 0; font:800 clamp(38px,5.4vw,62px)/1.04 "Bricolage Grotesque",sans-serif;
+     letter-spacing:-.035em}
+  h1 .thin{display:block; color:var(--ink-45)}
+  .hero p{margin:22px 0 0; font-size:17.5px; color:var(--ink-70); max-width:30em}
+  .hero p b{color:var(--ink); font-weight:500}
+  .hero .mono{color:var(--coral)}
+
+  /* board illustration - XO Mini's actual palette and geometry */
+  .art{position:relative; justify-self:center; width:100%; max-width:310px; aspect-ratio:1;
+       border-radius:30px; display:grid; place-items:center;
+       background:
+         radial-gradient(70% 42% at 10% 8%,rgba(91,110,245,.30),transparent 70%),
+         radial-gradient(66% 40% at 92% 92%,rgba(255,138,61,.26),transparent 70%),
+         #DFE4F2;
+       box-shadow:0 22px 44px -22px rgba(22,24,29,.55);}
+  .board{width:76%; aspect-ratio:1; background:#fff; border-radius:20px; padding:9px;
+         display:grid; grid-template-columns:repeat(3,1fr); gap:7px;
+         box-shadow:0 8px 22px -12px rgba(46,51,85,.5)}
+  .sq{background:#F0F2F9; border-radius:9px; display:grid; place-items:center}
+  .sq svg{width:62%; height:62%}
+
+  /* ---------- sections ---------- */
+  section{padding:0 0 12px}
+  .sec-head{display:flex; align-items:center; gap:16px; margin-bottom:22px}
+  .sec-head .mono{color:var(--ink-45); white-space:nowrap}
+  .sec-head .line{flex:1; height:1px; background:var(--hair)}
+
+  /* ---------- cards ---------- */
+  .card{
+    position:relative; background:var(--surface); border:1px solid var(--hair);
+    border-radius:20px; padding:26px; text-decoration:none; display:block;
+    transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  }
+  .card::before{content:""; position:absolute; inset:0; border-radius:20px; pointer-events:none;
+                background:linear-gradient(180deg,var(--tint,transparent),transparent 55%); opacity:.5}
+  a.card:hover{transform:translateY(-3px); border-color:var(--accent,var(--hair));
+               box-shadow:0 16px 34px -20px rgba(22,24,29,.6)}
+
+  .feature{display:grid; grid-template-columns:auto 1fr auto; gap:26px; align-items:center;
+           margin-bottom:38px}
+  .icon{width:64px; height:64px; border-radius:17px; display:grid; place-items:center; flex:none}
+  .title-row{display:flex; align-items:center; gap:11px; flex-wrap:wrap}
+  .title{font:700 25px "Bricolage Grotesque",sans-serif; letter-spacing:-.022em}
+  .blurb{margin:9px 0 0; font-size:15px; color:var(--ink-70); max-width:46em}
+  .blurb b{color:var(--ink); font-weight:500}
+
+  .tag{font-family:"IBM Plex Mono",monospace; font-size:10px; font-weight:500; letter-spacing:.13em;
+       text-transform:uppercase; padding:4px 9px; border-radius:999px; white-space:nowrap}
+  .tag.live{color:var(--live); background:var(--live-bg)}
+  .tag.soon{color:var(--ink-45); border:1px solid var(--hair)}
+
+  .cta{flex:none; display:inline-flex; align-items:center; gap:9px; height:48px; padding:0 22px;
+       border-radius:13px; background:var(--ink); color:var(--paper);
+       font:700 14.5px "Space Grotesk"; white-space:nowrap}
+  .feature:hover .cta{background:var(--accent,var(--ink))}
+
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+  .grid .card{padding:24px 22px}
+  .grid .icon{width:52px; height:52px; border-radius:14px; margin-bottom:16px}
+  .grid .title{font-size:19px}
+  .grid .blurb{font-size:14px; margin-top:8px}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:76px; border-top:1px solid var(--hair); padding:26px 0 54px;
+         display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
+         font-size:14px; color:var(--ink-70)}
+  footer a{text-decoration-color:var(--hair); text-underline-offset:3px}
+  footer a:hover{text-decoration-color:currentColor}
+
+  @media (max-width:880px){
+    .hero{grid-template-columns:1fr; gap:42px; padding:52px 0 60px}
+    .art{max-width:264px; order:-1; justify-self:start}
+    .grid{grid-template-columns:1fr}
+    .feature{grid-template-columns:auto 1fr; gap:20px}
+    .feature .cta{grid-column:1/-1; justify-content:center}
+  }
+  @media (max-width:520px){
+    .shell{padding:0 18px}
+    .feature{grid-template-columns:1fr}
+    h1{letter-spacing:-.028em}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="shell head-in">
+    <a class="wordmark" href="/">fungrid<em>.</em></a>
+    <span class="mono">Android games</span>
+  </div>
+</header>
+
+<main class="shell">
+
+  <div class="hero">
+    <div>
+      <div class="mono">Independent · two people · one grid at a time</div>
+      <h1>Small games,<span class="thin">made properly.</span></h1>
+      <p>Classic games rebuilt for Android. <b>A few megabytes each, no sign-ups, nothing
+      that nags you.</b> They open instantly and play the same whether or not you have
+      a connection.</p>
+    </div>
+
+    <!-- XO Mini's real board: same palette, same geometry as the app itself. -->
+    <div class="art" role="img" aria-label="An XO Mini board with X and O played on it">
+      <div class="board">
+        <div class="sq"><svg viewBox="0 0 64 64"><path d="M14,14 L50,50 M50,14 L14,50" fill="none" stroke="#5B6EF5" stroke-width="9" stroke-linecap="round"/></svg></div>
+        <div class="sq"></div>
+        <div class="sq"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="18" fill="none" stroke="#FF8A3D" stroke-width="9"/></svg></div>
+        <div class="sq"></div>
+        <div class="sq"><svg viewBox="0 0 64 64"><path d="M14,14 L50,50 M50,14 L14,50" fill="none" stroke="#5B6EF5" stroke-width="9" stroke-linecap="round"/></svg></div>
+        <div class="sq"></div>
+        <div class="sq"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="18" fill="none" stroke="#FF8A3D" stroke-width="9"/></svg></div>
+        <div class="sq"></div>
+        <div class="sq"><svg viewBox="0 0 64 64"><path d="M14,14 L50,50 M50,14 L14,50" fill="none" stroke="#5B6EF5" stroke-width="9" stroke-linecap="round"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><span class="mono">Out now</span><span class="line"></span></div>
+
+    <a class="card feature" style="--accent:#5B6EF5; --tint:rgba(91,110,245,.07)"
+       href="https://play.google.com/store/apps/details?id=com.fungrid.xomini">
+      <span class="icon" style="background:#EDEFFE">
+        <svg viewBox="0 0 64 64" width="42" height="42" aria-hidden="true">
+          <path d="M9,9 L29,29 M29,9 L9,29" fill="none" stroke="#5B6EF5" stroke-width="7.5" stroke-linecap="round"/>
+          <circle cx="44" cy="44" r="11.5" fill="none" stroke="#FF8A3D" stroke-width="7.5"/>
+        </svg>
+      </span>
+      <span>
+        <span class="title-row"><span class="title">XO Mini</span><span class="tag live">Live on Google Play</span></span>
+        <span class="blurb">Tic-tac-toe with a twist. Play it straight, or flip to <b>Misère</b>,
+        where getting three in a row is how you <em>lose</em>. Pass one phone back and forth,
+        or take on an AI that simply cannot be beaten on Hard.</span>
+      </span>
+      <span class="cta">Get it →</span>
+    </a>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="mono">In closed testing</span><span class="line"></span></div>
+
+    <!-- No store links here on purpose: a closed-testing listing 404s for the public.
+         Add the href as each one reaches production. -->
+    <div class="grid">
+      <div class="card" style="--accent:#CA8A00; --tint:rgba(202,138,0,.07)">
+        <span class="icon" style="background:#FBF3DF">
+          <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true">
+            <circle cx="21" cy="43" r="10" fill="#CA8A00"/>
+            <circle cx="43" cy="43" r="10" fill="#1C222B"/>
+            <circle cx="32" cy="21" r="10" fill="#CA8A00"/>
+          </svg>
+        </span>
+        <div class="title-row"><span class="title">Connect 4 Mini</span></div>
+        <p class="blurb">Drop a disc, watch the stack build, and line up four before your
+        opponent gets there. Undo when it all goes wrong.</p>
+        <p style="margin:14px 0 0"><span class="tag soon">Closed testing</span></p>
+      </div>
+
+      <div class="card" style="--accent:#E0623C; --tint:rgba(224,98,60,.07)">
+        <span class="icon" style="background:#FAEBE5">
+          <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true">
+            <g font-family="Space Grotesk,sans-serif" font-size="20" font-weight="700" text-anchor="middle">
+              <text x="21" y="29" fill="#16181D">4</text><text x="43" y="29" fill="#E0623C">7</text>
+              <text x="21" y="51" fill="#2F9BA1">1</text><text x="43" y="51" fill="#16181D">9</text>
+            </g>
+          </svg>
+        </span>
+        <div class="title-row"><span class="title">Sudoku Mini</span></div>
+        <p class="blurb">Hand-sized boards — and any board can travel as a link, so a friend
+        opens the very same puzzle and races your time.</p>
+        <p style="margin:14px 0 0"><span class="tag soon">Closed testing</span></p>
+      </div>
+
+      <div class="card" style="--accent:#2E6B45; --tint:rgba(46,107,69,.07)">
+        <span class="icon" style="background:#E9F3EA">
+          <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true">
+            <rect x="8" y="21" width="21" height="21" rx="6" fill="#022710"/>
+            <rect x="34" y="21" width="21" height="21" rx="6" fill="#F7E04F"/>
+            <g font-family="Space Grotesk,sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+              <text x="18.5" y="36.5" fill="#FAFDF7">W</text><text x="44.5" y="36.5" fill="#022710">O</text>
+            </g>
+          </svg>
+        </span>
+        <div class="title-row"><span class="title">World of Words</span></div>
+        <p class="blurb">A journey told in words. Work across the map board by board, or step
+        off it for a quick round with nothing to lose.</p>
+        <p style="margin:14px 0 0"><span class="tag soon">Closed testing</span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Made by FunGrid.</span>
+    <span>Bugs, questions or ideas → <a href="mailto:fungridapp@gmail.com">fungridapp@gmail.com</a></span>
+  </footer>
+
+</main>
+</body>
+</html>
