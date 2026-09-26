@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dots and Boxes Mini · Privacy Policy</title>
+<meta name="description" content="How Dots and Boxes Mini handles your data: names, scores and settings stay on your phone, and ads come from Google AdMob.">
+<meta property="og:title" content="Dots and Boxes Mini · Privacy Policy">
+<meta property="og:description" content="Everything you play stays on your phone. No accounts, no analytics.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F4EFE4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* Same layout and palette as sudoku/privacypolicy - one studio, one policy style. */
+  :root {
+    --paper: #F4EFE4; --surface: #FFFFFF; --ink: #16181D; --ink-70: rgba(22,24,29,.68);
+    --hair: rgba(22,24,29,.16); --coral: #E0623C; --teal: #2F9BA1; --wash: rgba(22,24,29,.043);
+    --tint: #DFF0EF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #18191D; --surface: #23252B; --ink: #EDE7DA; --ink-70: rgba(237,231,218,.68);
+      --hair: rgba(237,231,218,.16); --coral: #EC7148; --teal: #3BB0B6; --wash: rgba(237,231,218,.04);
+      --tint: #1E3A3C;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #18191D; --surface: #23252B; --ink: #EDE7DA; --ink-70: rgba(237,231,218,.68);
+    --hair: rgba(237,231,218,.16); --coral: #EC7148; --teal: #3BB0B6; --wash: rgba(237,231,218,.04);
+    --tint: #1E3A3C;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--ink); background-color: var(--paper);
+    background-image: linear-gradient(var(--wash) 1px, transparent 1px), linear-gradient(90deg, var(--wash) 1px, transparent 1px);
+    background-size: 28px 28px;
+    font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.55;
+    display: flex; justify-content: center; padding: 28px 16px 56px;
+  }
+  main { width: 100%; max-width: 720px; }
+  a { color: inherit; text-decoration-color: var(--coral); text-underline-offset: 3px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .mark { width: 48px; height: 48px; flex: none; }
+  .word { font: 800 30px "Bricolage Grotesque", sans-serif; letter-spacing: -.03em; line-height: 1; }
+  .mini { font: 500 11px "IBM Plex Mono", monospace; letter-spacing: .4em; color: var(--coral); text-transform: uppercase; }
+  .eyebrow { font: 400 11px "IBM Plex Mono", monospace; letter-spacing: .24em; text-transform: uppercase; color: var(--ink-70); }
+  h1 { margin: 8px 0 0; font: 800 clamp(30px, 8vw, 42px) "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; }
+  h2 { margin: 0 0 10px; font: 800 22px "Bricolage Grotesque", sans-serif; letter-spacing: -.01em; }
+  h3 { margin: 22px 0 6px; font: 700 15px "Space Grotesk"; }
+  p, li { color: var(--ink-70); }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  li { margin-bottom: 7px; }
+  b, strong { color: var(--ink); }
+  .card { background: var(--surface); border: 2px solid var(--ink); border-radius: 18px;
+    padding: 22px; margin-top: 18px; box-shadow: 5px 5px 0 var(--hair); }
+  .card.lead { background: var(--ink); box-shadow: 5px 5px 0 var(--coral); }
+  .card.lead h2, .card.lead p, .card.lead li, .card.lead b { color: var(--paper); }
+  .card.lead p, .card.lead li { color: rgba(244,239,228,.78); }
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 18px; }
+  .glance div { background: var(--tint); border: 2px solid var(--ink); border-radius: 14px; padding: 14px 16px; }
+  .glance b { display: block; font-size: 15px; margin-bottom: 3px; }
+  .glance span { font-size: 13px; color: var(--ink-70); }
+  nav.toc { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+  nav.toc a { font: 500 12px "Space Grotesk"; text-decoration: none; border: 2px solid var(--ink);
+    border-radius: 999px; padding: 6px 12px; background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+  th { font: 400 10px "IBM Plex Mono", monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-70); }
+  td { color: var(--ink-70); }
+  td b { color: var(--ink); }
+  /* Narrow screens: a table row becomes a small labelled block instead of squeezed columns. */
+  @media (max-width: 560px) {
+    table, tbody, tr, td { display: block; width: 100%; }
+    thead { display: none; }
+    tr { border-bottom: 1px solid var(--hair); padding: 12px 0; }
+    tr:last-child { border-bottom: 0; }
+    td { border: 0; padding: 0 0 6px; }
+    td:last-child { padding-bottom: 0; }
+    td::before { content: attr(data-label); display: block;
+      font: 400 10px "IBM Plex Mono", monospace; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--ink-70); margin-bottom: 2px; }
+  }
+  .stamp { font: 400 11px "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-70); margin-top: 10px; }
+  footer { margin-top: 28px; font-size: 13px; color: var(--ink-70); text-align: center; }
+  footer a { margin: 0 8px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">
+    <!-- A 3x3 dot grid with one box claimed: the game in one glance. -->
+    <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+      <rect x="6" y="6" width="18" height="18" rx="2" fill="var(--coral)" opacity=".22"/>
+      <g stroke="var(--coral)" stroke-width="3.5" stroke-linecap="round">
+        <path d="M6 6H24M6 24H24M6 6V24M24 6V24"/>
+      </g>
+      <path d="M24 42H42" stroke="var(--teal)" stroke-width="3.5" stroke-linecap="round"/>
+      <g fill="var(--ink)">
+        <circle cx="6" cy="6" r="4"/><circle cx="24" cy="6" r="4"/><circle cx="42" cy="6" r="4"/>
+        <circle cx="6" cy="24" r="4"/><circle cx="24" cy="24" r="4"/><circle cx="42" cy="24" r="4"/>
+        <circle cx="6" cy="42" r="4"/><circle cx="24" cy="42" r="4"/><circle cx="42" cy="42" r="4"/>
+      </g>
+    </svg>
+    <div><div class="word">DOTS AND BOXES</div><div class="mini">mini</div></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:30px">privacy policy</div>
+  <h1>Your game stays on your phone</h1>
+  <div class="stamp">last updated 27 September 2026 · applies to Dots and Boxes Mini for Android (com.fungrid.dotsandboxesmini)</div>
+
+  <div class="card lead">
+    <h2>The short version</h2>
+    <ul>
+      <li><b>No account, no sign-in.</b> We never ask who you are.</li>
+      <li><b>We collect nothing.</b> The player names you type, your leaderboard and your settings are saved on your phone and never sent to us.</li>
+      <li><b>Ads are the one exception.</b> Google AdMob shows the ads and processes data for them, under Google's own policy.</li>
+      <li><b>You stay in control.</b> Clear the leaderboard in Settings, change your ad choices, or uninstall to erase everything.</li>
+    </ul>
+  </div>
+
+  <div class="glance">
+    <div><b>No sign-in</b><span>No email, contacts or location. Player names never leave your phone.</span></div>
+    <div><b>No analytics</b><span>No tracking of how you play.</span></div>
+    <div><b>Ads by Google</b><span>AdMob banners, with a consent choice where required.</span></div>
+  </div>
+
+  <nav class="toc">
+    <a href="#who">Who we are</a>
+    <a href="#device">Stored on your phone</a>
+    <a href="#collect">What we collect</a>
+    <a href="#ads">Ads</a>
+    <a href="#site">This website</a>
+    <a href="#permissions">Permissions</a>
+    <a href="#children">Children</a>
+    <a href="#rights">Your choices</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="card" id="who">
+    <h2>Who we are</h2>
+    <p>Dots and Boxes Mini is made by <b>fungrid</b>, an independent app developer. In this policy, "we" and "us"
+      mean fungrid, and "the app" means Dots and Boxes Mini for Android. We are the data controller for the
+      limited processing described here.</p>
+    <p>Questions about privacy: <a href="mailto:fungridapp@gmail.com">fungridapp@gmail.com</a>.</p>
+  </div>
+
+  <div class="card" id="device">
+    <h2>What the app stores on your phone</h2>
+    <p>All of this is kept in the app's private storage on your device. It never leaves your phone,
+      and nobody — including us — can read it from anywhere else.</p>
+    <table>
+      <thead><tr><th>What</th><th>Why</th><th>How to remove it</th></tr></thead>
+      <tr><td data-label="What"><b>Player names and faces</b><br>the name you type and the face you pick, and the same for a second player in pass &amp; play</td>
+        <td data-label="Why">So the game can greet you and fill them in next time.</td>
+        <td data-label="Remove">Change them on the setup screen, or uninstall the app.</td></tr>
+      <tr><td data-label="What"><b>Leaderboard</b><br>for each finished game: player names and faces, mode, opponent (bot level or pass &amp; play), board size, scores and when it was played. The newest 1,000 games are kept.</td>
+        <td data-label="Why">To rank players by wins and show records against each bot level.</td>
+        <td data-label="Remove">Tap Clear leaderboard in Settings, or uninstall the app.</td></tr>
+      <tr><td data-label="What"><b>Settings and preferences</b><br>sound, music and haptics choices, volumes, chosen track, last mode, difficulty and board size, whether you've seen the guide</td>
+        <td data-label="Why">So the app sounds and starts the way you left it.</td>
+        <td data-label="Remove">Uninstall the app.</td></tr>
+      <tr><td data-label="What"><b>Ad consent choice</b><br>stored by Google's consent library</td>
+        <td data-label="Why">To remember your answer and not ask again.</td>
+        <td data-label="Remove">Change it under Settings → Privacy options.</td></tr>
+    </table>
+    <p>A name is only a label for the leaderboard. You can type a nickname or anything you like; it is
+      never checked, uploaded or shared.</p>
+    <p>If Android Backup is switched on for your phone, Android may include the app's saved settings
+      and leaderboard in your own Google account backup. That backup belongs to you and is governed by
+      Google's privacy policy; we cannot read it.</p>
+  </div>
+
+  <div class="card" id="collect">
+    <h2>What we collect</h2>
+    <p><b>Nothing.</b> The app has no servers, no accounts and no analytics. We do not collect your
+      name, email address, phone number, contacts, photos, location or device identifiers, and we do
+      not build a profile of you. We receive no reports about how you play.</p>
+    <p>Two things sit outside that, and both are handled by Google rather than by us:</p>
+    <ul>
+      <li><b>Ads</b>, described below.</li>
+      <li><b>Google Play</b> may give us anonymous, aggregated statistics about installs, uninstalls,
+        ratings and crashes for the app as a whole, if your Android settings allow it. These are
+        counts and technical reports, not information about you, and we cannot identify anyone from them.</li>
+    </ul>
+  </div>
+
+  <div class="card" id="ads">
+    <h2>Ads</h2>
+    <p>The app is free and shows <b>banner ads</b> through <b>Google AdMob</b>, at the bottom of the
+      main menu and the game screen. There are no full-screen or video ads, and nothing interrupts a game.</p>
+    <p>To serve those ads, Google may process data such as your <b>advertising ID</b>, IP address
+      (which gives approximate, city-level location), device model and operating system version,
+      the app you are using, and your interactions with the ad. Google acts as an independent
+      controller for this. What Google does with it is set out in
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>
+      and in <a href="https://business.safety.google/privacy/" target="_blank" rel="noopener">how Google uses data from sites and apps that use its services</a>.</p>
+    <h3>Your consent</h3>
+    <p>Where the law requires it — in the European Economic Area, the United Kingdom and Switzerland —
+      the app shows Google's consent form the first time you open it, and asks whether ads may be
+      personalised. Your answer is remembered, and you can change it at any time under
+      <b>Settings → Privacy options</b> inside the app. If you decline, ads still appear, but they
+      are not personalised.</p>
+    <h3>Opting out on your device</h3>
+    <ul>
+      <li>Android: <b>Settings → Privacy → Ads</b>, where you can delete or reset your advertising ID
+        and turn off ad personalisation for every app.</li>
+      <li>Google account holders: <a href="https://myadcenter.google.com" target="_blank" rel="noopener">My Ad Center</a>.</li>
+    </ul>
+  </div>
+
+  <div class="card" id="site">
+    <h2>This website</h2>
+    <p>These pages are static and hosted on <b>GitHub Pages</b>. There are no cookies, no analytics
+      and no trackers.</p>
+    <ul>
+      <li>GitHub serves the pages and, like any web host, may log technical details such as your IP
+        address and browser for security and abuse prevention. See the
+        <a href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.</li>
+      <li>The pages load fonts from <b>Google Fonts</b>, so your browser contacts Google's servers and
+        Google receives your IP address in doing so.</li>
+    </ul>
+  </div>
+
+  <div class="card" id="permissions">
+    <h2>Permissions the app requests</h2>
+    <table>
+      <thead><tr><th>Permission</th><th>What it's for</th></tr></thead>
+      <tr><td data-label="Permission"><b>Internet</b>, <b>network state</b></td><td data-label="What for">Loading ads. The game itself, including the bot, runs on your phone and works fully offline.</td></tr>
+      <tr><td data-label="Permission"><b>Vibrate</b></td><td data-label="What for">The small taps you feel when drawing a line or closing a box. Turn it off with Settings → Haptics.</td></tr>
+      <tr><td data-label="Permission"><b>Advertising ID</b> and related ad services</td><td data-label="What for">Added by Google's ads library so ads can be shown and measured.</td></tr>
+    </table>
+    <p>The app asks for no runtime permissions at all: no camera, microphone, location, contacts,
+      photos or files.</p>
+  </div>
+
+  <div class="card" id="children">
+    <h2>Children</h2>
+    <p>Dots and Boxes Mini is a game suitable for all ages, but it is not directed at children under 13,
+      and we do not knowingly collect any personal information from children. Because the app shows
+      ads, a parent or guardian should decide whether it is appropriate for their child. If you
+      believe a child has provided personal information through the app, write to us and we will help;
+      in practice any name typed into the app stays on that phone and never reaches us.</p>
+  </div>
+
+  <div class="card" id="rights">
+    <h2>Your choices and rights</h2>
+    <ul>
+      <li><b>Delete your data.</b> Tap Clear leaderboard in Settings to remove every recorded game and
+        player. Uninstalling the app removes everything it has stored, permanently.</li>
+      <li><b>Change your ad choices</b> at any time under Settings → Privacy options.</li>
+      <li><b>Play without ads loading</b> by switching off your connection; the game works offline.</li>
+      <li><b>Access, correction, deletion, portability and objection.</b> Under laws such as the GDPR and
+        the CCPA/CPRA you have rights over personal data held about you. We hold none, so there is
+        nothing for us to hand over or delete. For data processed by Google for ads, use the Google
+        links above or contact Google directly.</li>
+      <li><b>We do not sell or share your personal information</b>, and never have.</li>
+    </ul>
+    <p>Data is kept only on your device, for as long as you keep the app installed. We run no servers
+      and hold no backups of your data.</p>
+  </div>
+
+  <div class="card" id="contact">
+    <h2>Changes and contact</h2>
+    <p>If this policy changes, the updated version appears on this page with a new date at the top.
+      Significant changes will also be noted in the app's store listing.</p>
+    <p>Questions, requests or concerns: <a href="mailto:fungridapp@gmail.com">fungridapp@gmail.com</a>.
+      We aim to reply within a few days.</p>
+  </div>
+
+  <footer>
+    <a href="../../">fungrid</a> ·
+    <a href="https://play.google.com/store/apps/details?id=com.fungrid.dotsandboxesmini">Dots and Boxes Mini on Google Play</a><br>
+    <span style="opacity:.7">© 2026 fungrid</span>
+  </footer>
+</main>
+</body>
+</html>
