@@ -260,22 +260,11 @@
     <div class="sec-head"><span class="mono">Coming soon</span><span class="line"></span></div>
 
     <div class="grid">
-      <!-- Colours are the app's own: p1 coral, p2 teal, dots in its ink, purple accent. -->
-      <div class="card" style="--accent:#6A4AC9; --tint:rgba(106,74,201,.07)">
-        <span class="icon" style="background:#F1EEF7">
-          <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
-            <rect x="10" y="10" width="22" height="22" rx="2" fill="#E2603C" opacity=".25"/>
-            <rect x="32" y="32" width="22" height="22" rx="2" fill="#1F8F8F" opacity=".25"/>
-            <g stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
-              <path d="M10 10H32V32H10Z" stroke="#E2603C"/>
-              <path d="M32 32H54V54H32Z" stroke="#1F8F8F"/>
-            </g>
-            <g fill="#3B3450">
-              <circle cx="10" cy="10" r="4.5"/><circle cx="32" cy="10" r="4.5"/><circle cx="54" cy="10" r="4.5"/>
-              <circle cx="10" cy="32" r="4.5"/><circle cx="32" cy="32" r="4.5"/><circle cx="54" cy="32" r="4.5"/>
-              <circle cx="10" cy="54" r="4.5"/><circle cx="32" cy="54" r="4.5"/><circle cx="54" cy="54" r="4.5"/>
-            </g>
-          </svg>
+      <!-- The app's own logo, cropped from its rendered launcher foreground (IconRenderTest),
+           on the icon's peach backdrop. Accent is the teal player's colour. -->
+      <div class="card" style="--accent:#1F8F8F; --tint:rgba(31,143,143,.07)">
+        <span class="icon" style="background:#FCEBDD">
+          <img src="dotsandboxes/icon.png" width="40" height="40" alt="">
         </span>
         <div class="title-row"><span class="title">Dots and Boxes Mini</span></div>
         <p class="blurb">Draw a line, close a box, take another turn. Win the chain fight in
