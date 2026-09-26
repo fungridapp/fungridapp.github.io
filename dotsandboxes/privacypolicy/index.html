@@ -8,72 +8,85 @@
 <meta property="og:title" content="Dots and Boxes Mini · Privacy Policy">
 <meta property="og:description" content="Everything you play stays on your phone. No accounts, no analytics.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#F4EFE4">
+<meta name="theme-color" content="#FFF8EF">
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  /* Same layout and palette as sudoku/privacypolicy - one studio, one policy style. */
+  /* The game's own look: its Classic "apricot cream" backdrop, soft white cards, plum ink, and the
+     two players' colours - orange (Player 1) and teal (Player 2) - with the gradients its captured
+     boxes use. Colours are from the app's res/values/colors.xml and ui/SkinBackground.kt.
+     Light only, like the app. */
   :root {
-    --paper: #F4EFE4; --surface: #FFFFFF; --ink: #16181D; --ink-70: rgba(22,24,29,.68);
-    --hair: rgba(22,24,29,.16); --coral: #E0623C; --teal: #2F9BA1; --wash: rgba(22,24,29,.043);
-    --tint: #DFF0EF;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #18191D; --surface: #23252B; --ink: #EDE7DA; --ink-70: rgba(237,231,218,.68);
-      --hair: rgba(237,231,218,.16); --coral: #EC7148; --teal: #3BB0B6; --wash: rgba(237,231,218,.04);
-      --tint: #1E3A3C;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #18191D; --surface: #23252B; --ink: #EDE7DA; --ink-70: rgba(237,231,218,.68);
-    --hair: rgba(237,231,218,.16); --coral: #EC7148; --teal: #3BB0B6; --wash: rgba(237,231,218,.04);
-    --tint: #1E3A3C;
+    color-scheme: light;
+    --ink: #211D2E; --body: #514A66; --muted: #8A839C; --dot: #3B3450;
+    --card: #FFFFFF; --hair: rgba(33,29,46,.10); --track: #E5E0F0;
+    --p1: #E2603C; --p1-dark: #A8391A; --p1-a: #F58A63; --p1-b: #DC5733; --p1-tint: #FFEDE4;
+    --p2: #1F8F8F; --p2-dark: #146B6B; --p2-a: #34AAA9; --p2-b: #177C7C; --p2-tint: #E3F4F2;
+    --purple: #6A4AC9; --purple-tint: #EFEAFB;
+    --shadow: 0 3px 14px rgba(33,29,46,.07), 0 1px 2px rgba(33,29,46,.05);
   }
   * { box-sizing: border-box; }
+  html { background: #FCE3D3; }
   body {
-    margin: 0; color: var(--ink); background-color: var(--paper);
-    background-image: linear-gradient(var(--wash) 1px, transparent 1px), linear-gradient(90deg, var(--wash) 1px, transparent 1px);
-    background-size: 28px 28px;
-    font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.55;
+    margin: 0; color: var(--ink); min-height: 100vh;
+    /* Apricot cream, as in the app: a warm diagonal wash, a white glow top-left and a faint
+       orange one bottom-right, under a quiet grid of dots. */
+    background:
+      radial-gradient(rgba(59,52,80,.10) 1.6px, transparent 1.8px) 0 0 / 26px 26px,
+      radial-gradient(80% 60% at 15% 5%, rgba(255,255,255,.6), transparent 70%),
+      radial-gradient(90% 70% at 95% 100%, rgba(226,96,60,.10), transparent 70%),
+      linear-gradient(160deg, #FFF8EF, #FEEEDF 55%, #FCE3D3);
+    font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.6;
     display: flex; justify-content: center; padding: 28px 16px 56px;
   }
   main { width: 100%; max-width: 720px; }
-  a { color: inherit; text-decoration-color: var(--coral); text-underline-offset: 3px; }
-  .brand { display: flex; align-items: center; gap: 12px; }
-  .mark { width: 54px; height: 54px; flex: none; border-radius: 15px; background: #FCEBDD;
-    display: grid; place-items: center; }
+  a { color: var(--p1-dark); text-decoration-color: rgba(226,96,60,.45); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: currentColor; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .mark { width: 58px; height: 58px; flex: none; border-radius: 17px; background: var(--card);
+    display: grid; place-items: center; box-shadow: var(--shadow); }
   .mark img { display: block; }
-  .word { font: 800 30px "Bricolage Grotesque", sans-serif; letter-spacing: -.03em; line-height: 1; }
-  .mini { font: 500 11px "IBM Plex Mono", monospace; letter-spacing: .4em; color: var(--coral); text-transform: uppercase; }
-  .eyebrow { font: 400 11px "IBM Plex Mono", monospace; letter-spacing: .24em; text-transform: uppercase; color: var(--ink-70); }
-  h1 { margin: 8px 0 0; font: 800 clamp(30px, 8vw, 42px) "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; }
+  .word { font: 800 28px "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; line-height: 1.05; }
+  .mini { font: 700 12px "Space Grotesk", sans-serif; letter-spacing: .3em; color: var(--p1); text-transform: uppercase; margin-top: 3px; }
+  .eyebrow { display: inline-block; font: 700 11px "Space Grotesk", sans-serif; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--p2-dark); background: var(--p2-tint);
+    padding: 5px 11px; border-radius: 99px; }
+  h1 { margin: 12px 0 0; font: 800 clamp(30px, 8vw, 44px)/1.08 "Bricolage Grotesque", sans-serif; letter-spacing: -.025em; }
   h2 { margin: 0 0 10px; font: 800 22px "Bricolage Grotesque", sans-serif; letter-spacing: -.01em; }
   h3 { margin: 22px 0 6px; font: 700 15px "Space Grotesk"; }
-  p, li { color: var(--ink-70); }
+  p, li { color: var(--body); }
   p { margin: 0 0 12px; }
   ul { margin: 0 0 12px; padding-left: 20px; }
   li { margin-bottom: 7px; }
+  li::marker { color: var(--p1); }
   b, strong { color: var(--ink); }
-  .card { background: var(--surface); border: 2px solid var(--ink); border-radius: 18px;
-    padding: 22px; margin-top: 18px; box-shadow: 5px 5px 0 var(--hair); }
-  .card.lead { background: var(--ink); box-shadow: 5px 5px 0 var(--coral); }
-  .card.lead h2, .card.lead p, .card.lead li, .card.lead b { color: var(--paper); }
-  /* Mixed from --paper, not a fixed cream: in dark mode the lead card turns light, and a
-     fixed cream would vanish into it. */
-  .card.lead p, .card.lead li { color: color-mix(in srgb, var(--paper) 78%, transparent); }
-  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 18px; }
-  .glance div { background: var(--tint); border: 2px solid var(--ink); border-radius: 14px; padding: 14px 16px; }
+  code { font-size: .92em; background: var(--track); border-radius: 6px; padding: 1px 5px; }
+  .card { background: var(--card); border-radius: 17px; padding: 22px; margin-top: 16px; box-shadow: var(--shadow); }
+  /* The lead card is a captured teal box: the Player 2 gradient, its soft coloured shadow and
+     the thin highlight along the top edge. */
+  .card.lead { background: linear-gradient(145deg, var(--p2-a), var(--p2-b));
+    box-shadow: 0 10px 24px rgba(23,124,124,.28), inset 0 1px 0 rgba(255,255,255,.35); }
+  .card.lead h2, .card.lead b { color: #fff; }
+  .card.lead p, .card.lead li { color: rgba(255,255,255,.86); }
+  .card.lead li::marker { color: rgba(255,255,255,.7); }
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+  .glance div { background: var(--card); border-radius: 15px; padding: 14px 16px 14px 18px; box-shadow: var(--shadow);
+    border-left: 5px solid var(--c); }
+  .glance div:nth-child(1) { --c: var(--p1); }
+  .glance div:nth-child(2) { --c: var(--p2); }
+  .glance div:nth-child(3) { --c: var(--purple); }
   .glance b { display: block; font-size: 15px; margin-bottom: 3px; }
-  .glance span { font-size: 13px; color: var(--ink-70); }
-  nav.toc { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
-  nav.toc a { font: 500 12px "Space Grotesk"; text-decoration: none; border: 2px solid var(--ink);
-    border-radius: 999px; padding: 6px 12px; background: var(--surface); }
+  .glance span { font-size: 13px; color: var(--body); }
+  nav.toc { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+  nav.toc a { font: 700 12px "Space Grotesk"; text-decoration: none; color: var(--ink);
+    border-radius: 99px; padding: 7px 13px; background: var(--card); box-shadow: 0 2px 6px rgba(33,29,46,.10); }
+  nav.toc a:hover { background: var(--p1-tint); color: var(--p1-dark); }
   table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; font-size: 14px; }
-  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--hair); vertical-align: top; }
-  th { font: 400 10px "IBM Plex Mono", monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-70); }
-  td { color: var(--ink-70); }
+  th, td { text-align: left; padding: 10px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+  th { font: 700 11px "Space Grotesk"; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  td { color: var(--body); }
   td b { color: var(--ink); }
   /* Narrow screens: a table row becomes a small labelled block instead of squeezed columns. */
   @media (max-width: 560px) {
@@ -84,26 +97,25 @@
     td { border: 0; padding: 0 0 6px; }
     td:last-child { padding-bottom: 0; }
     td::before { content: attr(data-label); display: block;
-      font: 400 10px "IBM Plex Mono", monospace; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--ink-70); margin-bottom: 2px; }
+      font: 700 11px "Space Grotesk"; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 2px; }
   }
-  .stamp { font: 400 11px "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-70); margin-top: 10px; }
-  footer { margin-top: 28px; font-size: 13px; color: var(--ink-70); text-align: center; }
-  footer a { margin: 0 8px; }
+  .stamp { font: 500 12px "Space Grotesk"; color: var(--muted); margin-top: 10px; }
+  footer { margin-top: 30px; font-size: 13px; color: var(--muted); text-align: center; }
+  footer a { margin: 0 8px; color: var(--body); }
 </style>
 </head>
 <body>
 <main>
   <div class="brand">
-    <!-- The app's own logo, cropped from its rendered launcher foreground. It sits on the
-         icon's peach tile so its dark dots still read on the dark theme. -->
+    <!-- The app's own logo, cropped from its rendered launcher foreground. -->
     <span class="mark"><img src="../icon.png" width="42" height="42" alt=""></span>
     <div><div class="word">DOTS AND BOXES</div><div class="mini">mini</div></div>
   </div>
 
   <div class="eyebrow" style="margin-top:30px">privacy policy</div>
   <h1>Your game stays on your phone</h1>
-  <div class="stamp">last updated 27 September 2026 · applies to Dots and Boxes Mini for Android (com.fungrid.dotsandboxesmini)</div>
+  <div class="stamp">Last updated 27 September 2026 · applies to Dots and Boxes Mini for Android (com.fungrid.dotsandboxesmini)</div>
 
   <div class="card lead">
     <h2>The short version</h2>
