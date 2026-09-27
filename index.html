@@ -9,32 +9,40 @@
 <meta property="og:description" content="Small, fast Android games. A few megabytes each, no sign-ups.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://fungridapp.github.io/">
-<meta name="theme-color" content="#F4EFE4">
+<meta name="theme-color" content="#F3F5FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1630" media="(prefers-color-scheme: dark)">
+<meta property="og:image" content="https://fungridapp.github.io/brand/fungrid-icon-512.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/brand/fungrid-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;800&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  /* Palette follows sudoku/index.html - same studio, same hand. Each game then brings
-     its own accent, taken from that game's real in-app colours. */
+  /* Palette from the fungrid logo: navy night, sunset orange and the gold where they meet.
+     --sun is the logo's orange for fills; --coral is a deeper cut of it for text and focus
+     rings, so small orange text still clears 4.5:1. Each game card keeps its own accent,
+     taken from that game's real in-app colours. */
   :root{
-    --paper:#F4EFE4; --surface:#FFFFFF; --ink:#16181D;
-    --ink-70:rgba(22,24,29,.66); --ink-45:rgba(22,24,29,.45);
-    --hair:rgba(22,24,29,.14); --wash:rgba(22,24,29,.04);
-    --coral:#E0623C; --live:#1B6B44; --live-bg:rgba(27,107,68,.10);
+    --paper:#F3F5FB; --surface:#FFFFFF; --ink:#15213F;
+    --ink-70:rgba(21,33,63,.70); --ink-45:rgba(21,33,63,.52);
+    --hair:rgba(21,33,63,.13); --wash:rgba(21,33,63,.045);
+    --sun:#FF7A45; --gold:#FFB347; --coral:#C9481A;
+    --live:#1B6B44; --live-bg:rgba(27,107,68,.10);
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --paper:#17181C; --surface:#212329; --ink:#EDE7DA;
-      --ink-70:rgba(237,231,218,.66); --ink-45:rgba(237,231,218,.45);
-      --hair:rgba(237,231,218,.15); --wash:rgba(237,231,218,.038);
-      --coral:#EC7148; --live:#5FD39B; --live-bg:rgba(95,211,155,.12);
+      --paper:#0E1630; --surface:#17223F; --ink:#EEF1F8;
+      --ink-70:rgba(238,241,248,.70); --ink-45:rgba(238,241,248,.52);
+      --hair:rgba(238,241,248,.14); --wash:rgba(238,241,248,.04);
+      --coral:#FF8C55; --live:#5FD39B; --live-bg:rgba(95,211,155,.12);
     }
   }
   :root[data-theme="dark"]{
-    --paper:#17181C; --surface:#212329; --ink:#EDE7DA;
-    --ink-70:rgba(237,231,218,.66); --ink-45:rgba(237,231,218,.45);
-    --hair:rgba(237,231,218,.15); --wash:rgba(237,231,218,.038);
-    --coral:#EC7148; --live:#5FD39B; --live-bg:rgba(95,211,155,.12);
+    --paper:#0E1630; --surface:#17223F; --ink:#EEF1F8;
+    --ink-70:rgba(238,241,248,.70); --ink-45:rgba(238,241,248,.52);
+    --hair:rgba(238,241,248,.14); --wash:rgba(238,241,248,.04);
+    --coral:#FF8C55; --live:#5FD39B; --live-bg:rgba(95,211,155,.12);
   }
 
   *{box-sizing:border-box}
@@ -53,11 +61,18 @@
   .mono{font-family:"IBM Plex Mono",monospace; font-weight:400; font-size:11px;
         letter-spacing:.22em; text-transform:uppercase}
 
-  /* ---------- masthead: wordmark only, set in type ---------- */
-  header{padding:30px 0 0}
-  .head-in{display:flex; align-items:baseline; justify-content:space-between; gap:20px}
-  .wordmark{font:800 21px "Bricolage Grotesque",sans-serif; letter-spacing:-.02em; text-decoration:none}
-  .wordmark em{font-style:normal; color:var(--coral)}
+  /* ---------- masthead: the logo lockup (brand/), white wordmark on dark ---------- */
+  header{padding:26px 0 0}
+  .head-in{display:flex; align-items:center; justify-content:space-between; gap:20px}
+  .wordmark{display:block; text-decoration:none; border-radius:10px}
+  .wordmark img{display:block; height:40px; width:auto}
+  .wordmark .on-dark{display:none}
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .wordmark .on-light{display:none}
+    :root:not([data-theme="light"]) .wordmark .on-dark{display:block}
+  }
+  :root[data-theme="dark"] .wordmark .on-light{display:none}
+  :root[data-theme="dark"] .wordmark .on-dark{display:block}
   .head-in .mono{color:var(--ink-45)}
 
   /* ---------- hero ---------- */
@@ -70,19 +85,10 @@
   .hero p b{color:var(--ink); font-weight:500}
   .hero .mono{color:var(--coral)}
 
-  /* board illustration - XO Mini's actual palette and geometry */
-  .art{position:relative; justify-self:center; width:100%; max-width:310px; aspect-ratio:1;
-       border-radius:30px; display:grid; place-items:center;
-       background:
-         radial-gradient(70% 42% at 10% 8%,rgba(91,110,245,.30),transparent 70%),
-         radial-gradient(66% 40% at 92% 92%,rgba(255,138,61,.26),transparent 70%),
-         #DFE4F2;
-       box-shadow:0 22px 44px -22px rgba(22,24,29,.55);}
-  .board{width:76%; aspect-ratio:1; background:#fff; border-radius:20px; padding:9px;
-         display:grid; grid-template-columns:repeat(3,1fr); gap:7px;
-         box-shadow:0 8px 22px -12px rgba(46,51,85,.5)}
-  .sq{background:#F0F2F9; border-radius:9px; display:grid; place-items:center}
-  .sq svg{width:62%; height:62%}
+  /* The logo mark, large: the sun setting across the grid, tipped a few degrees for play. */
+  .art{justify-self:center; width:100%; max-width:300px}
+  .art img{display:block; width:100%; height:auto; transform:rotate(-4deg);
+           filter:drop-shadow(0 26px 34px rgba(21,33,63,.34))}
 
   /* ---------- sections ---------- */
   section{padding:0 0 12px}
@@ -134,7 +140,7 @@
 
   @media (max-width:880px){
     .hero{grid-template-columns:1fr; gap:42px; padding:52px 0 60px}
-    .art{max-width:264px; order:-1; justify-self:start}
+    .art{max-width:200px; order:-1; justify-self:start}
     .grid{grid-template-columns:1fr}
     .feature{grid-template-columns:auto 1fr; gap:20px}
     .feature .cta{grid-column:1/-1; justify-content:center}
@@ -143,6 +149,7 @@
     .shell{padding:0 18px}
     .feature{grid-template-columns:1fr}
     h1{letter-spacing:-.028em}
+    .art{max-width:132px}
   }
 </style>
 </head>
@@ -150,7 +157,10 @@
 
 <header>
   <div class="shell head-in">
-    <a class="wordmark" href="/">fungrid<em>.</em></a>
+    <a class="wordmark" href="/" aria-label="fungrid home">
+      <img class="on-light" src="brand/fungrid-logo.svg" width="226" height="64" alt="fungrid">
+      <img class="on-dark" src="brand/fungrid-logo-white.svg" width="226" height="64" alt="fungrid">
+    </a>
     <span class="mono">Android games</span>
   </div>
 </header>
@@ -166,19 +176,9 @@
       a connection.</p>
     </div>
 
-    <!-- XO Mini's real board: same palette, same geometry as the app itself. -->
-    <div class="art" role="img" aria-label="An XO Mini board with X and O played on it">
-      <div class="board">
-        <div class="sq"><svg viewBox="0 0 64 64"><path d="M14,14 L50,50 M50,14 L14,50" fill="none" stroke="#5B6EF5" stroke-width="9" stroke-linecap="round"/></svg></div>
-        <div class="sq"></div>
-        <div class="sq"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="18" fill="none" stroke="#FF8A3D" stroke-width="9"/></svg></div>
-        <div class="sq"></div>
-        <div class="sq"><svg viewBox="0 0 64 64"><path d="M14,14 L50,50 M50,14 L14,50" fill="none" stroke="#5B6EF5" stroke-width="9" stroke-linecap="round"/></svg></div>
-        <div class="sq"></div>
-        <div class="sq"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="18" fill="none" stroke="#FF8A3D" stroke-width="9"/></svg></div>
-        <div class="sq"></div>
-        <div class="sq"><svg viewBox="0 0 64 64"><path d="M14,14 L50,50 M50,14 L14,50" fill="none" stroke="#5B6EF5" stroke-width="9" stroke-linecap="round"/></svg></div>
-      </div>
+    <div class="art">
+      <img src="brand/fungrid-icon.svg" width="300" height="300"
+           alt="The fungrid logo: the letters fg over a grid of tiles, navy night meeting an orange sunset">
     </div>
   </div>
 
