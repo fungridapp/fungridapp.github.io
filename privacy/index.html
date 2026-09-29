@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>fungrid · Privacy policies</title>
+<meta name="description" content="Privacy policies for every fungrid app. Everything you play stays on your phone; ads come from Google AdMob.">
+<meta property="og:title" content="fungrid · Privacy policies">
+<meta property="og:description" content="Privacy policies for every fungrid app.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F3F5FB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1630" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/brand/fungrid-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* The studio's own page, so it wears the fungrid logo palette (as the home page does);
+     each policy it links to wears its game's colours. */
+  :root{
+    --paper:#F3F5FB; --surface:#FFFFFF; --ink:#15213F;
+    --ink-70:rgba(21,33,63,.70); --ink-45:rgba(21,33,63,.52);
+    --hair:rgba(21,33,63,.13); --wash:rgba(21,33,63,.045); --coral:#C9481A;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#0E1630; --surface:#17223F; --ink:#EEF1F8;
+      --ink-70:rgba(238,241,248,.70); --ink-45:rgba(238,241,248,.52);
+      --hair:rgba(238,241,248,.14); --wash:rgba(238,241,248,.04); --coral:#FF8C55;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0E1630; --surface:#17223F; --ink:#EEF1F8;
+    --ink-70:rgba(238,241,248,.70); --ink-45:rgba(238,241,248,.52);
+    --hair:rgba(238,241,248,.14); --wash:rgba(238,241,248,.04); --coral:#FF8C55;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; color:var(--ink); background-color:var(--paper);
+    background-image:linear-gradient(var(--wash) 1px,transparent 1px),linear-gradient(90deg,var(--wash) 1px,transparent 1px);
+    background-size:30px 30px; font-family:"Space Grotesk",system-ui,sans-serif; line-height:1.55;
+    display:flex; justify-content:center; padding:26px 16px 56px}
+  main{width:100%; max-width:720px}
+  a{color:inherit}
+  :focus-visible{outline:2.5px solid var(--coral); outline-offset:3px; border-radius:6px}
+  .logo img{display:block; height:40px; width:auto}
+  .logo .on-dark{display:none}
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .logo .on-light{display:none}
+    :root:not([data-theme="light"]) .logo .on-dark{display:block}
+  }
+  :root[data-theme="dark"] .logo .on-light{display:none}
+  :root[data-theme="dark"] .logo .on-dark{display:block}
+  .kick{margin-top:40px; font:500 11px "Space Grotesk"; letter-spacing:.22em; text-transform:uppercase; color:var(--coral)}
+  h1{margin:10px 0 0; font:700 clamp(32px,7vw,46px)/1.08 Fredoka,sans-serif; letter-spacing:-.015em}
+  .lede{margin:14px 0 0; color:var(--ink-70); max-width:36em}
+  .list{margin-top:28px; display:grid; gap:12px}
+  .row{display:flex; align-items:center; gap:16px; padding:16px 18px; background:var(--surface);
+       border:1px solid var(--hair); border-radius:18px; text-decoration:none;
+       transition:transform .16s ease, box-shadow .16s ease}
+  .row:hover{transform:translateY(-2px); box-shadow:0 14px 28px -18px rgba(21,33,63,.55)}
+  .row img{width:52px; height:52px; border-radius:14px; flex:none; box-shadow:0 0 0 1px var(--hair)}
+  .name{font:600 19px Fredoka,sans-serif}
+  .meta{font-size:13px; color:var(--ink-70)}
+  .go{margin-left:auto; font-weight:700; font-size:14px; color:var(--coral); white-space:nowrap}
+  .note{margin-top:26px; font-size:14px; color:var(--ink-70)}
+  footer{margin-top:34px; padding-top:20px; border-top:1px solid var(--hair); font-size:13px; color:var(--ink-70);
+         display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+  @media (max-width:420px){ .go{display:none} }
+</style>
+</head>
+<body>
+<main>
+  <a class="logo" href="/" aria-label="fungrid home">
+    <img class="on-light" src="../brand/fungrid-logo.svg" width="226" height="64" alt="fungrid">
+    <img class="on-dark" src="../brand/fungrid-logo-white.svg" width="226" height="64" alt="fungrid">
+  </a>
+
+  <div class="kick">Privacy</div>
+  <h1>Privacy policies</h1>
+  <p class="lede">Every fungrid app works the same way: no accounts, no analytics, and everything you
+    play stays on your phone. Ads come from Google AdMob. Each app's policy has the details.</p>
+
+  <div class="list">
+    <a class="row" href="../xomini/privacypolicy/"><img src="../games/xomini.png" alt=""><span><span class="name">XO Mini</span><br><span class="meta">com.fungrid.xomini</span></span><span class="go">Read policy →</span></a>
+    <a class="row" href="../connect4mini/privacypolicy/"><img src="../games/connect4mini.png" alt=""><span><span class="name">Connect 4 Mini</span><br><span class="meta">com.fungrid.connect4mini</span></span><span class="go">Read policy →</span></a>
+    <a class="row" href="../sudoku/privacypolicy/"><img src="../games/sudokumini.png" alt=""><span><span class="name">Sudoku Mini</span><br><span class="meta">com.fungrid.sudokumini</span></span><span class="go">Read policy →</span></a>
+    <a class="row" href="../worldofwords/privacypolicy/"><img src="../games/worldofwords.png" alt=""><span><span class="name">World of Words</span><br><span class="meta">com.fungrid.worldofwordsmini</span></span><span class="go">Read policy →</span></a>
+    <a class="row" href="../dotsandboxes/privacypolicy/"><img src="../games/dotsandboxesmini.png" alt=""><span><span class="name">Dots and Boxes Mini</span><br><span class="meta">com.fungrid.dotsandboxesmini</span></span><span class="go">Read policy →</span></a>
+  </div>
+
+  <p class="note">Questions about privacy: <a href="mailto:fungridapp@gmail.com">fungridapp@gmail.com</a>.</p>
+
+  <footer>
+    <span>By fungrid</span>
+    <a href="/">Back to fungrid</a>
+  </footer>
+</main>
+</body>
+</html>

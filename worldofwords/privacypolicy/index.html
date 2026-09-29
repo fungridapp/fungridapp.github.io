@@ -3,89 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dots and Boxes Mini · Privacy Policy</title>
-<meta name="description" content="How Dots and Boxes Mini handles your data: names, scores and settings stay on your phone, and ads come from Google AdMob.">
-<meta property="og:title" content="Dots and Boxes Mini · Privacy Policy">
+<title>World of Words · Privacy Policy</title>
+<meta name="description" content="How World of Words handles your data: names, scores and settings stay on your phone, and ads come from Google AdMob.">
+<meta property="og:title" content="World of Words · Privacy Policy">
 <meta property="og:description" content="Everything you play stays on your phone. No accounts, no analytics.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#FFF8EF">
+<meta name="theme-color" content="#99E3FF">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  /* The game's own look: its Classic "apricot cream" backdrop, soft white cards, plum ink, and the
-     two players' colours - orange (Player 1) and teal (Player 2) - with the gradients its captured
-     boxes use. Colours are from the app's res/values/colors.xml and ui/SkinBackground.kt.
-     Light only, like the app. */
+  /* World of Words's own look, from the app's colors.xml and fonts. Light only, like the app.
+     Generated with the other policies; edit the generator's copy, not just this page. */
   :root {
     color-scheme: light;
-    --ink: #211D2E; --body: #514A66; --muted: #8A839C; --dot: #3B3450;
-    --card: #FFFFFF; --hair: rgba(33,29,46,.10); --track: #E5E0F0;
-    --p1: #E2603C; --p1-dark: #A8391A; --p1-a: #F58A63; --p1-b: #DC5733; --p1-tint: #FFEDE4;
-    --p2: #1F8F8F; --p2-dark: #146B6B; --p2-a: #34AAA9; --p2-b: #177C7C; --p2-tint: #E3F4F2;
-    --purple: #6A4AC9; --purple-tint: #EFEAFB;
-    --shadow: 0 3px 14px rgba(33,29,46,.07), 0 1px 2px rgba(33,29,46,.05);
+    --ink: #022710; --body: #4D6453; --muted: #5F7465; --card: #FAFDF7; --hair: #DBE4DB;
+    --accent: #007591; --link: #A83876; --marker: #CD5394; --tint: #AAE3EF; --tint-ink: #005468;
+    --shadow: 0 3px 14px rgba(20,24,40,.07), 0 1px 2px rgba(20,24,40,.05);
   }
   * { box-sizing: border-box; }
-  html { background: #FCE3D3; }
   body {
-    margin: 0; color: var(--ink); min-height: 100vh;
-    /* Apricot cream, as in the app: a warm diagonal wash, a white glow top-left and a faint
-       orange one bottom-right, under a quiet grid of dots. */
-    background:
-      radial-gradient(rgba(59,52,80,.10) 1.6px, transparent 1.8px) 0 0 / 26px 26px,
-      radial-gradient(80% 60% at 15% 5%, rgba(255,255,255,.6), transparent 70%),
-      radial-gradient(90% 70% at 95% 100%, rgba(226,96,60,.10), transparent 70%),
-      linear-gradient(160deg, #FFF8EF, #FEEEDF 55%, #FCE3D3);
-    font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.6;
+    margin: 0; color: var(--ink); min-height: 100vh; background: linear-gradient(178deg, #99E3FF 0%, #AAEFF7 30%, #BFF4C9 65%, #D8E89B 100%);
+    font-family: Outfit, system-ui, sans-serif; line-height: 1.6;
     display: flex; justify-content: center; padding: 28px 16px 56px;
   }
   main { width: 100%; max-width: 720px; }
-  a { color: var(--p1-dark); text-decoration-color: rgba(226,96,60,.45); text-underline-offset: 3px; }
-  a:hover { text-decoration-color: currentColor; }
+  a { color: var(--link); text-underline-offset: 3px; }
   .brand { display: flex; align-items: center; gap: 14px; }
-  .mark { width: 58px; height: 58px; flex: none; border-radius: 17px; background: var(--card);
-    display: grid; place-items: center; box-shadow: var(--shadow); }
-  .mark img { display: block; }
-  .word { font: 800 28px "Bricolage Grotesque", sans-serif; letter-spacing: -.02em; line-height: 1.05; }
-  .mini { font: 700 12px "Space Grotesk", sans-serif; letter-spacing: .3em; color: var(--p1); text-transform: uppercase; margin-top: 3px; }
-  .eyebrow { display: inline-block; font: 700 11px "Space Grotesk", sans-serif; letter-spacing: .18em;
-    text-transform: uppercase; color: var(--p2-dark); background: var(--p2-tint);
-    padding: 5px 11px; border-radius: 99px; }
-  h1 { margin: 12px 0 0; font: 800 clamp(30px, 8vw, 44px)/1.08 "Bricolage Grotesque", sans-serif; letter-spacing: -.025em; }
-  h2 { margin: 0 0 10px; font: 800 22px "Bricolage Grotesque", sans-serif; letter-spacing: -.01em; }
-  h3 { margin: 22px 0 6px; font: 700 15px "Space Grotesk"; }
+  .mark { width: 58px; height: 58px; flex: none; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+  .mark img { display: block; width: 100%; height: 100%; }
+  .word { font: 700 28px Outfit, system-ui, sans-serif; letter-spacing: -.01em; line-height: 1.05; }
+  .sub { font-weight: 700; font-size: 12px; letter-spacing: .28em; color: #CD5394; text-transform: uppercase; margin-top: 4px; }
+  .eyebrow { display: inline-block; font-weight: 700; font-size: 11px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--tint-ink); background: var(--tint); padding: 5px 11px; border-radius: 99px; }
+  h1 { margin: 12px 0 0; font: 700 clamp(30px, 8vw, 44px) Outfit, system-ui, sans-serif; line-height: 1.1; letter-spacing: -.02em; }
+  h2 { margin: 0 0 10px; font: 700 22px Outfit, system-ui, sans-serif; letter-spacing: -.01em; }
+  h3 { margin: 22px 0 6px; font-size: 15px; font-weight: 700; }
   p, li { color: var(--body); }
   p { margin: 0 0 12px; }
   ul { margin: 0 0 12px; padding-left: 20px; }
   li { margin-bottom: 7px; }
-  li::marker { color: var(--p1); }
+  li::marker { color: var(--marker); }
   b, strong { color: var(--ink); }
-  code { font-size: .92em; background: var(--track); border-radius: 6px; padding: 1px 5px; }
-  .card { background: var(--card); border-radius: 17px; padding: 22px; margin-top: 16px; box-shadow: var(--shadow); }
-  /* The lead card is a captured teal box: the Player 2 gradient, its soft coloured shadow and
-     the thin highlight along the top edge. */
-  .card.lead { background: linear-gradient(145deg, var(--p2-a), var(--p2-b));
-    box-shadow: 0 10px 24px rgba(23,124,124,.28), inset 0 1px 0 rgba(255,255,255,.35); }
+  .card { background: var(--card); border-radius: 18px; padding: 22px; margin-top: 16px; box-shadow: var(--shadow); }
+  .card.lead { background: linear-gradient(150deg, #0A8FA8, #007591 55%, #005F76); box-shadow: 0 10px 24px rgba(0,95,118,.30), inset 0 1px 0 rgba(255,255,255,.3); }
   .card.lead h2, .card.lead b { color: #fff; }
-  .card.lead p, .card.lead li { color: rgba(255,255,255,.86); }
+  .card.lead p, .card.lead li { color: rgba(255,255,255,.88); }
   .card.lead li::marker { color: rgba(255,255,255,.7); }
   .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
-  .glance div { background: var(--card); border-radius: 15px; padding: 14px 16px 14px 18px; box-shadow: var(--shadow);
-    border-left: 5px solid var(--c); }
-  .glance div:nth-child(1) { --c: var(--p1); }
-  .glance div:nth-child(2) { --c: var(--p2); }
-  .glance div:nth-child(3) { --c: var(--purple); }
+  .glance div { background: var(--card); border-radius: 15px; padding: 14px 16px 14px 18px; box-shadow: var(--shadow); border-left: 5px solid var(--c); }
+  .glance div:nth-child(1) { --c: #CAE763; } .glance div:nth-child(2) { --c: #40BEFD; } .glance div:nth-child(3) { --c: #FB83BF; }
   .glance b { display: block; font-size: 15px; margin-bottom: 3px; }
   .glance span { font-size: 13px; color: var(--body); }
   nav.toc { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
-  nav.toc a { font: 700 12px "Space Grotesk"; text-decoration: none; color: var(--ink);
-    border-radius: 99px; padding: 7px 13px; background: var(--card); box-shadow: 0 2px 6px rgba(33,29,46,.10); }
-  nav.toc a:hover { background: var(--p1-tint); color: var(--p1-dark); }
+  nav.toc a { font-weight: 700; font-size: 12px; text-decoration: none; color: var(--ink);
+    border-radius: 99px; padding: 7px 13px; background: var(--card); box-shadow: 0 2px 6px rgba(20,24,40,.10); }
+  nav.toc a:hover { background: var(--tint); color: var(--tint-ink); }
   table { width: 100%; border-collapse: collapse; margin: 10px 0 14px; font-size: 14px; }
   th, td { text-align: left; padding: 10px; border-bottom: 1px solid var(--hair); vertical-align: top; }
-  th { font: 700 11px "Space Grotesk"; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  th { font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
   td { color: var(--body); }
   td b { color: var(--ink); }
   /* Narrow screens: a table row becomes a small labelled block instead of squeezed columns. */
@@ -96,11 +73,10 @@
     tr:last-child { border-bottom: 0; }
     td { border: 0; padding: 0 0 6px; }
     td:last-child { padding-bottom: 0; }
-    td::before { content: attr(data-label); display: block;
-      font: 700 11px "Space Grotesk"; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 2px; }
+    td::before { content: attr(data-label); display: block; font-weight: 700; font-size: 11px;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
   }
-  .stamp { font: 500 12px "Space Grotesk"; color: var(--muted); margin-top: 10px; }
+  .stamp { font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 10px; }
   footer { margin-top: 30px; font-size: 13px; color: var(--muted); text-align: center; }
   footer a { margin: 0 8px; color: var(--body); }
 </style>
@@ -108,29 +84,28 @@
 <body>
 <main>
   <div class="brand">
-    <!-- The app's own logo, cropped from its rendered launcher foreground. -->
-    <span class="mark"><img src="../icon.png" width="42" height="42" alt=""></span>
-    <div><div class="word">DOTS AND BOXES</div><div class="mini">mini</div></div>
+    <span class="mark"><img src="../../games/worldofwords.png" width="58" height="58" alt=""></span>
+    <div><div class="word">World of Words</div><div class="sub">a fungrid game</div></div>
   </div>
 
-  <div class="eyebrow" style="margin-top:30px">privacy policy</div>
+  <div class="eyebrow" style="margin-top:30px">Privacy policy</div>
   <h1>Your game stays on your phone</h1>
-  <div class="stamp">Last updated 27 September 2026 · applies to Dots and Boxes Mini for Android (com.fungrid.dotsandboxesmini)</div>
+  <div class="stamp">Last updated 29 September 2026 · applies to World of Words for Android (com.fungrid.worldofwordsmini)</div>
 
   <div class="card lead">
     <h2>The short version</h2>
     <ul>
       <li><b>No account, no sign-in.</b> We never ask who you are.</li>
-      <li><b>We collect nothing.</b> The player names you type, your leaderboard and your settings are saved on your phone and never sent to us.</li>
+      <li><b>We collect nothing.</b> The names you type, your scores and your settings are saved on your phone and never sent to us.</li>
       <li><b>Ads are the one exception.</b> Google AdMob shows the ads and processes data for them, under Google's own policy.</li>
-      <li><b>You stay in control.</b> Clear the leaderboard in Settings, change your ad choices, or uninstall to erase everything.</li>
+      <li><b>You stay in control.</b> Change your ad choices in Settings, clear the app's storage, or uninstall to erase everything.</li>
     </ul>
   </div>
 
   <div class="glance">
     <div><b>No sign-in</b><span>No email, contacts or location. Player names never leave your phone.</span></div>
     <div><b>No analytics</b><span>No tracking of how you play.</span></div>
-    <div><b>Ads by Google</b><span>AdMob banners, with a consent choice where required.</span></div>
+    <div><b>Ads by Google</b><span>AdMob, with a consent choice where required.</span></div>
   </div>
 
   <nav class="toc">
@@ -147,8 +122,8 @@
 
   <div class="card" id="who">
     <h2>Who we are</h2>
-    <p>Dots and Boxes Mini is made by <b>fungrid</b>, an independent app developer. In this policy, "we" and "us"
-      mean fungrid, and "the app" means Dots and Boxes Mini for Android. We are the data controller for the
+    <p>World of Words is made by <b>fungrid</b>, an independent app developer. In this policy, "we" and "us"
+      mean fungrid, and "the app" means World of Words for Android. We are the data controller for the
       limited processing described here.</p>
     <p>Questions about privacy: <a href="mailto:fungridapp@gmail.com">fungridapp@gmail.com</a>.</p>
   </div>
@@ -159,23 +134,26 @@
       and nobody — including us — can read it from anywhere else.</p>
     <table>
       <thead><tr><th>What</th><th>Why</th><th>How to remove it</th></tr></thead>
-      <tr><td data-label="What"><b>Player names and faces</b><br>the name you type and the face you pick, and the same for a second player in pass &amp; play</td>
-        <td data-label="Why">So the game can greet you and fill them in next time.</td>
-        <td data-label="Remove">Change them on the setup screen, or uninstall the app.</td></tr>
-      <tr><td data-label="What"><b>Leaderboard</b><br>for each finished game: player names and faces, mode, opponent (bot level or pass &amp; play), board size, scores and when it was played. The newest 1,000 games are kept.</td>
-        <td data-label="Why">To rank players by wins and show records against each bot level.</td>
-        <td data-label="Remove">Tap Clear leaderboard in Settings, or uninstall the app.</td></tr>
-      <tr><td data-label="What"><b>Settings and preferences</b><br>sound, music and haptics choices, volumes, chosen track, last mode, difficulty and board size, whether you've seen the guide</td>
-        <td data-label="Why">So the app sounds and starts the way you left it.</td>
-        <td data-label="Remove">Uninstall the app.</td></tr>
-      <tr><td data-label="What"><b>Ad consent choice</b><br>stored by Google's consent library</td>
+      <tr><td data-label="What"><b>Player names</b><br>the two names you type for Pass &amp; Play</td>
+        <td data-label="Why">So the game can fill them in next time and label the leaderboard.</td>
+        <td data-label="Remove">Change them before a game, or clear the app&#x27;s storage.</td></tr>
+      <tr><td data-label="What"><b>Journey progress</b><br>where you are on the map, and for each board you&#x27;ve played: its stars, time, score and the words you found</td>
+        <td data-label="Why">So you can pick up your journey and replay boards.</td>
+        <td data-label="Remove">Clear the app&#x27;s storage, or uninstall the app.</td></tr>
+      <tr><td data-label="What"><b>Leaderboard</b><br>your best Quick Play runs and their points, and Pass &amp; Play standings: player names, games won and points</td>
+        <td data-label="Why">To show your best runs and who&#x27;s ahead.</td>
+        <td data-label="Remove">Clear the app&#x27;s storage, or uninstall the app.</td></tr>
+      <tr><td data-label="What"><b>Settings</b><br>sound, music and haptics on or off and their volumes</td>
+        <td data-label="Why">So the app sounds the way you set it.</td>
+        <td data-label="Remove">Clear the app&#x27;s storage, or uninstall the app.</td></tr>
+      <tr><td data-label="What"><b>Ad consent choice</b><br>stored by Google&#x27;s consent library</td>
         <td data-label="Why">To remember your answer and not ask again.</td>
-        <td data-label="Remove">Change it under Settings → Privacy options.</td></tr>
+        <td data-label="Remove">Change it under Settings → Ad privacy options.</td></tr>
     </table>
-    <p>A name is only a label for the leaderboard. You can type a nickname or anything you like; it is
+    <p>A name is only a label for the game. You can type a nickname or anything you like; it is
       never checked, uploaded or shared.</p>
     <p>If Android Backup is switched on for your phone, Android may include the app's saved settings
-      and leaderboard in your own Google account backup. That backup belongs to you and is governed by
+      and progress in your own Google account backup. That backup belongs to you and is governed by
       Google's privacy policy; we cannot read it.</p>
   </div>
 
@@ -195,8 +173,8 @@
 
   <div class="card" id="ads">
     <h2>Ads</h2>
-    <p>The app is free and shows <b>banner ads</b> through <b>Google AdMob</b>, at the bottom of the
-      main menu and the game screen. There are no full-screen or video ads, and nothing interrupts a game.</p>
+    <p>The app is free and shows <b>banner ads</b> through <b>Google AdMob</b>, at the bottom of the main menu and the journey map.
+      You can also choose to watch a <b>rewarded video ad</b> to earn an extra hint, or an extra minute and a hint to keep a board going. These only play when you tap to watch one; the game never shows them on its own, and nothing interrupts a board.</p>
     <p>To serve those ads, Google may process data such as your <b>advertising ID</b>, IP address
       (which gives approximate, city-level location), device model and operating system version,
       the app you are using, and your interactions with the ad. Google acts as an independent
@@ -207,7 +185,7 @@
     <p>Where the law requires it — in the European Economic Area, the United Kingdom and Switzerland —
       the app shows Google's consent form the first time you open it, and asks whether ads may be
       personalised. Your answer is remembered, and you can change it at any time under
-      <b>Settings → Privacy options</b> inside the app. If you decline, ads still appear, but they
+      <b>Settings → Ad privacy options</b> inside the app. If you decline, ads still appear, but they
       are not personalised.</p>
     <h3>Opting out on your device</h3>
     <ul>
@@ -234,8 +212,8 @@
     <h2>Permissions the app requests</h2>
     <table>
       <thead><tr><th>Permission</th><th>What it's for</th></tr></thead>
-      <tr><td data-label="Permission"><b>Internet</b>, <b>network state</b></td><td data-label="What for">Loading ads. The game itself, including the bot, runs on your phone and works fully offline.</td></tr>
-      <tr><td data-label="Permission"><b>Vibrate</b></td><td data-label="What for">The small taps you feel when drawing a line or closing a box. Turn it off with Settings → Haptics.</td></tr>
+      <tr><td data-label="Permission"><b>Internet</b>, <b>network state</b></td><td data-label="What for">Loading ads. The game itself, including its word list, is on your phone and works fully offline; only ads need a connection.</td></tr>
+      <tr><td data-label="Permission"><b>Vibrate</b></td><td data-label="What for">The small taps you feel as you trace a word. Turn it off with Settings → Haptics.</td></tr>
       <tr><td data-label="Permission"><b>Advertising ID</b> and related ad services</td><td data-label="What for">Added by Google's ads library so ads can be shown and measured.</td></tr>
     </table>
     <p>The app asks for no runtime permissions at all: no camera, microphone, location, contacts,
@@ -244,7 +222,7 @@
 
   <div class="card" id="children">
     <h2>Children</h2>
-    <p>Dots and Boxes Mini is a game suitable for all ages, but it is not directed at children under 13,
+    <p>World of Words is a word game suitable for all ages, but it is not directed at children under 13,
       and we do not knowingly collect any personal information from children. Because the app shows
       ads, a parent or guardian should decide whether it is appropriate for their child. If you
       believe a child has provided personal information through the app, write to us and we will help;
@@ -254,9 +232,8 @@
   <div class="card" id="rights">
     <h2>Your choices and rights</h2>
     <ul>
-      <li><b>Delete your data.</b> Tap Clear leaderboard in Settings to remove every recorded game and
-        player. Uninstalling the app removes everything it has stored, permanently.</li>
-      <li><b>Change your ad choices</b> at any time under Settings → Privacy options.</li>
+      <li><b>Delete your data.</b> The app has no in-app reset. To remove everything it stores, clear its storage (Android Settings → Apps → World of Words → Storage → Clear storage) or uninstall it.</li>
+      <li><b>Change your ad choices</b> at any time under Settings → Ad privacy options.</li>
       <li><b>Play without ads loading</b> by switching off your connection; the game works offline.</li>
       <li><b>Access, correction, deletion, portability and objection.</b> Under laws such as the GDPR and
         the CCPA/CPRA you have rights over personal data held about you. We hold none, so there is
@@ -277,9 +254,7 @@
   </div>
 
   <footer>
-    <a href="../../">fungrid</a> ·
-    <a href="https://play.google.com/store/apps/details?id=com.fungrid.dotsandboxesmini">Dots and Boxes Mini on Google Play</a> ·
-    <a href="../../privacy/">All privacy policies</a><br>
+    <a href="../../">fungrid</a> · <a href="../../privacy/">All privacy policies</a><br>
     <span style="opacity:.7">© 2026 fungrid</span>
   </footer>
 </main>

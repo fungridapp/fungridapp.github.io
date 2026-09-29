@@ -61,7 +61,8 @@
     padding: 22px; margin-top: 18px; box-shadow: 5px 5px 0 var(--hair); }
   .card.lead { background: var(--ink); box-shadow: 5px 5px 0 var(--coral); }
   .card.lead h2, .card.lead p, .card.lead li, .card.lead b { color: var(--paper); }
-  .card.lead p, .card.lead li { color: rgba(244,239,228,.78); }
+  /* Mixed from --paper so it flips with the theme: in dark mode the lead card turns light. */
+  .card.lead p, .card.lead li { color: color-mix(in srgb, var(--paper) 78%, transparent); }
   .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 18px; }
   .glance div { background: var(--tint); border: 2px solid var(--ink); border-radius: 14px; padding: 14px 16px; }
   .glance b { display: block; font-size: 15px; margin-bottom: 3px; }
@@ -279,7 +280,8 @@
 
   <footer>
     <a href="../">Shared board page</a> ·
-    <a href="https://play.google.com/store/apps/details?id=com.fungrid.sudokumini">Sudoku Mini on Google Play</a><br>
+    <a href="https://play.google.com/store/apps/details?id=com.fungrid.sudokumini">Sudoku Mini on Google Play</a> ·
+    <a href="../../privacy/">All privacy policies</a><br>
     <span style="opacity:.7">© 2026 fungrid</span>
   </footer>
 </main>
